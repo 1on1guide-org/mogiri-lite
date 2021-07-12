@@ -1,6 +1,6 @@
 # mogiri
 
-Conference reception bot for Discord with Eventbrite
+Conference reception bot for Discord with connpass
 
 ## About
 
@@ -13,24 +13,38 @@ Please put these environment values on .env file on root dir.
 
 ```config/{development|production}.json
 {
-    "data" : {
-        "filePath": "orders_attendees.csv"
+  "discord": {
+    "privateKey": "Bot TOKEN for your Application in Discord DEVELOPER PORTAL",
+    "roleForValidUser": "Name of the role to add to the userrole name",
+    "observation": [
+      "Chennel name to be observed"
+    ]
+  },
+  "googlespreadsheet": {
+    "sheetid": "Sheet ID from Google spreadsheet shared URL",
+    "sheetname": "sheet name in spreadsheet",
+    "orderrange": {
+      "description": "Column range with the reception number.",
+      "startRowIndex": 0,
+      "endRowIndex": 500,
+      "startColumnIndex": 0,
+      "endColumnIndex": 0
     },
-
-    "eventbrite" : {
-        "privateKey" : "{Your Evendbrite Private Key}",
-        "eventId" : "{Your Evendbrite Event ID}"
+    "acceptrange": {
+      "description": "Column range to enter the ID of the registered discord.(For more than two columns, make sure it works.)",
+      "startRowIndex": 0,
+      "endRowIndex": 500,
+      "startColumnIndex": 1,
+      "endColumnIndex": 1
     },
-
-    "discord" : {
-        "privateKey" : "{Your Discord Private Key}",
-        "roleForValidUser" : "{Discord Role Name for Valid User}
+    "credentials": {
+      "type": "ex. service account",
+      "project_id": "youre project id",
+      "private_key_id": "1234567890abcdef1234567890abcdef12345678"
+    }
 ```
 
-To get your Eventbrite private key : <https://www.eventbrite.com/platform/api-keys>
 
-Event ID can be taken from your event management page URL, eid parameter
-12-digits, <https://www.eventbrite.com/myevent?eid=123456789012>
 
 To register your bot to your server, please see...
 
@@ -60,10 +74,6 @@ PS > node index.js
 You> 大島さん
 Bot> 児島だよ
  
-You> My order number is 1234567890
-Bot> @You, 1234567890は有効なEventbriteオーダー番号です。
+You> My order number is 1234567
 Bot> @You, XXXのロールをつけました！
-
-You> My order number is 1234567890
-Bot> @You, あら、1234567890はEventbrite上に見当たりませんでした。10桁のOrder番号をご確認ください。
 ```

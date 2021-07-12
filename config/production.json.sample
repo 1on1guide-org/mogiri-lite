@@ -13,15 +13,15 @@
       "description": "Column range with the reception number.",
       "startRowIndex": 0,
       "endRowIndex": 500,
-      "startColumnIndex": 0,
-      "endColumnIndex": 0
+      "startColumnIndex": 10,
+      "endColumnIndex": 10
     },
     "acceptrange": {
       "description": "Column range to enter the ID of the registered discord.(For more than two columns, make sure it works.)",
       "startRowIndex": 0,
       "endRowIndex": 500,
-      "startColumnIndex": 1,
-      "endColumnIndex": 1
+      "startColumnIndex": 11,
+      "endColumnIndex": 11
     },
     "credentials": {
       "type": "ex. service account",
