@@ -13,7 +13,10 @@ const credentials = config.googlespreadsheet.credentials;
 // Mogiri が動作する正規表現パターン
 const PATTERNS = [
   /#(version|VERSION)/,
-  /#(?<ticket>\d{7})([^\d]|$)/
+  /#(?<ticket>\d{7})([^\d]|$)/,
+  /受付番号(?<ticket>\d{7})([^\d]|$)/,
+  /No.(?<ticket>\d{7})([^\d]|$)/,
+  /no.(?<ticket>\d{7})([^\d]|$)/
 ]
 
 class BotMogiri extends BotBase {
@@ -22,6 +25,9 @@ class BotMogiri extends BotBase {
   async run(index, match) {
     const FUNCS = [
       () => {this.reply(`Mogiri Version ${process.env.npm_package_version}.`)},
+      this.referPermission,
+      this.referPermission,
+      this.referPermission,
       this.referPermission
     ]
 
